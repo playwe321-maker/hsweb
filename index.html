@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 모바일 화면 대응 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="한신대학교 AI.SW대학 양세훈의 개인 웹사이트">
+  <title>양세훈의 개인 웹사이트</title>
+
+  <!-- 나눔고딕 웹폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================
+       기본 설정
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Nanum Gothic", sans-serif;
+      background: #f4fbff;
+      color: #263746;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =========================
+       네비게이션
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+
+      border-bottom: 1px solid #dceff8;
+    }
+
+    .nav {
+      max-width: 1100px;
+      height: 70px;
+      margin: auto;
+
+      padding: 0 25px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: #149dcc;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .menu a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #506575;
+
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: #129dcc;
+    }
+
+    /* =========================
+       공통 섹션
+    ========================= */
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 25px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: #15a5d7;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      margin-top: 8px;
+      font-size: 32px;
+      color: #203b4b;
+    }
+
+    .section-title p {
+      margin-top: 10px;
+      color: #78909c;
+    }
+
+    /* =========================
+       Hero
+    ========================= */
+
+    .hero {
+      max-width: none;
+      min-height: 100vh;
+      padding: 150px 25px 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(102, 211, 247, 0.35),
+          transparent 30%
+        ),
+        linear-gradient(135deg, #e8f8ff 0%, #f8fdff 55%, #dff6ff 100%);
+    }
+
+    .hero-inner {
+      width: 1100px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-text .small {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 30px;
+
+      background: #ffffff;
+      color: #149dcc;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      box-shadow: 0 5px 20px rgba(45, 170, 215, 0.12);
+    }
+
+    .hero-text h1 {
+      margin-top: 20px;
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.15;
+      color: #173b4c;
+    }
+
+    .hero-text h1 strong {
+      color: #14a5d6;
+    }
+
+    .hero-text p {
+      margin-top: 22px;
+      max-width: 600px;
+
+      color: #607987;
+      font-size: 17px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 30px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.3s;
+    }
+
+    .btn-main {
+      background: #19a7d7;
+      color: white;
+
+      box-shadow: 0 8px 20px rgba(25, 167, 215, 0.25);
+    }
+
+    .btn-main:hover {
+      background: #078dbd;
+      transform: translateY(-3px);
+    }
+
+    .btn-light {
+      background: white;
+      color: #2385a4;
+      border: 1px solid #ccecf7;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-3px);
+      background: #f0fbff;
+    }
+
+    /* =========================
+       프로필 이미지
+    ========================= */
+
+    .profile-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      position: relative;
+      width: min(360px, 90%);
+      padding: 12px;
+
+      background: white;
+      border-radius: 30px;
+
+      box-shadow:
+        0 25px 60px rgba(30, 130, 165, 0.18);
+
+      transform: rotate(2deg);
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+
+    .profile-badge {
+      position: absolute;
+      right: -20px;
+      bottom: 25px;
+
+      background: #ffffff;
+      padding: 15px 18px;
+      border-radius: 18px;
+
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+
+      font-size: 13px;
+      font-weight: 700;
+      color: #367389;
+    }
+
+    /* =========================
+       About
+    ========================= */
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .info-card {
+      padding: 30px;
+
+      background: #f6fcff;
+      border: 1px solid #dff2f9;
+      border-radius: 22px;
+
+      transition: 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(40, 160, 195, 0.1);
+    }
+
+    .info-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .info-card h3 {
+      color: #1b8eaf;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      color: #647b86;
+    }
+
+    /* =========================
+       학력 / 경력 / 자격
+    ========================= */
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 35px 40px;
+      border-left: 3px solid #b9eafa;
+    }
+
+    .timeline-item:last-child {
+      border-left-color: transparent;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 0;
+
+      width: 15px;
+      height: 15px;
+
+      background: #1aa7d7;
+      border: 4px solid #e1f8ff;
+      border-radius: 50%;
+    }
+
+    .timeline-year {
+      color: #13a1d2;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .timeline-item h3 {
+      margin-top: 5px;
+      color: #294d5d;
+    }
+
+    .timeline-item p {
+      margin-top: 5px;
+      color: #71858e;
+    }
+
+    /* =========================
+       성격
+    ========================= */
+
+    .personality-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .personality {
+      padding: 28px 20px;
+      text-align: center;
+
+      background: white;
+      border-radius: 22px;
+
+      border: 1px solid #dceff6;
+      box-shadow: 0 10px 25px rgba(50, 150, 180, 0.07);
+
+      transition: 0.3s;
+    }
+
+    .personality:hover {
+      transform: translateY(-7px);
+    }
+
+    .personality .emoji {
+      font-size: 40px;
+    }
+
+    .personality h3 {
+      margin-top: 12px;
+      color: #247b98;
+    }
+
+    .personality p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #78909c;
+    }
+
+    /* =========================
+       관심 분야
+    ========================= */
+
+    .skills {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      padding: 12px 20px;
+      border-radius: 50px;
+
+      background: #e7f8ff;
+      color: #147c9f;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      border: 1px solid #c8edf8;
+    }
+
+    /* =========================
+       Contact
+    ========================= */
+
+    .contact-box {
+      padding: 50px 30px;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #dff7ff,
+          #f5fdff
+        );
+
+      border-radius: 30px;
+      border: 1px solid #ccecf7;
+    }
+
+    .contact-box h2 {
+      color: #1e637a;
+    }
+
+    .contact-box p {
+      margin: 12px auto 25px;
+      color: #68818c;
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+
+      background: #183d4c;
+      color: #c9e6ef;
+
+      font-size: 13px;
+    }
+
+    footer strong {
+      color: #78dafa;
+    }
+
+    /* =========================
+       맨 위로 버튼
+    ========================= */
+
+    #topButton {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+
+      width: 48px;
+      height: 48px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #19a7d7;
+      color: white;
+
+      font-size: 20px;
+      cursor: pointer;
+
+      box-shadow: 0 8px 20px rgba(20, 160, 210, 0.3);
+
+      display: none;
+      z-index: 999;
+    }
+
+    #topButton:hover {
+      background: #087fa8;
+    }
+
+    /* =========================
+       모바일 반응형
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .nav {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .menu {
+        gap: 10px;
+      }
+
+      .menu a {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 45px;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .profile-card img {
+        height: 350px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .personality-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 27px;
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .menu {
+        display: none;
+      }
+
+      .hero-text h1 {
+        font-size: 43px;
+      }
+
+      .profile-card {
+        width: 90%;
+      }
+
+      .profile-card img {
+        height: 300px;
+      }
+
+      .profile-badge {
+        right: -5px;
+        bottom: 15px;
+        font-size: 11px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       Navigation
+  ========================== -->
+
+  <header>
+    <nav class="nav">
+
+      <a href="#home" class="logo">
+        YANG SE-HUN
+      </a>
+
+      <ul class="menu">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#education">학력</a></li>
+        <li><a href="#career">경력</a></li>
+        <li><a href="#personality">성격</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       Hero
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-inner">
+
+      <div class="hero-text">
+
+        <span class="small">
+          👋 HANSHIN UNIVERSITY · AI.SW
+        </span>
+
+        <h1>
+          안녕하세요.<br>
+          <strong>양세훈</strong>입니다.
+        </h1>
+
+        <p>
+          한신대학교 AI.SW대학에서 공부하고 있는 학생입니다.
+          새로운 기술을 배우고 직접 만들어보는 것을 좋아합니다.
+          이 웹사이트에서는 저의 학력, 경력, 자격 및 성격을 소개합니다.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-main">
+            나를 소개합니다 →
+          </a>
+
+          <a href="#contact" class="btn btn-light">
+            연락하기
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="profile-wrap">
+
+        <div class="profile-card">
+
+          <!-- Unsplash 이미지 -->
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+            alt="노트북을 이용해 공부하는 모습">
+
+          <div class="profile-badge">
+            🎓 AI.SW Student
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       About
+  ========================== -->
+
+  <section class="about" id="about">
+
+    <div class="section-title">
+      <span>ABOUT ME</span>
+      <h2>저를 소개합니다</h2>
+      <p>배우고, 경험하고, 성장하는 사람입니다.</p>
+    </div>
+
+
+    <div class="about-grid">
+
+      <div class="info-card">
+
+        <div class="info-icon">🎓</div>
+
+        <h3>학교</h3>
+
+        <p>
+          한신대학교 AI.SW대학에서
+          소프트웨어와 인공지능 관련 분야를
+          공부하고 있습니다.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="info-icon">💻</div>
+
+        <h3>관심 분야</h3>
+
+        <p>
+          웹프로그래밍, 소프트웨어 개발,
+          인공지능 및 새로운 IT 기술에
+          관심을 가지고 있습니다.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="info-icon">🌈</div>
+
+        <h3>좋아하는 색</h3>
+
+        <p>
+          제가 좋아하는 색은
+          시원하고 편안한 느낌을 주는
+          하늘색입니다.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="info-icon">🚀</div>
+
+        <h3>나의 목표</h3>
+
+        <p>
+          다양한 프로젝트 경험을 쌓으면서
+          실력을 꾸준히 발전시키고,
+          제가 만든 서비스를 사람들에게
+          도움이 되도록 만드는 것이 목표입니다.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Education
+  ========================== -->
+
+  <section id="education">
+
+    <div class="section-title">
+      <span>EDUCATION</span>
+      <h2>학력</h2>
+      <p>제가 걸어온 학업의 과정입니다.</p>
+    </div>
+
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          현재
+        </div>
+
+        <h3>한신대학교 AI.SW대학</h3>
+
+        <p>
+          학번 : 202678204<br>
+          AI.SW 관련 전공 및 웹프로그래밍 학습
+        </p>
+
+      </div>
+
+
+      <!-- 본인의 실제 학력을 입력하세요 -->
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          이전 학력
+        </div>
+
+        <h3>이전 학교명 입력</h3>
+
+        <p>
+          졸업 연도 및 학력 내용을 입력해주세요.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Career
+  ========================== -->
+
+  <section id="career">
+
+    <div class="section-title">
+      <span>CAREER</span>
+      <h2>경력 & 경험</h2>
+      <p>학교생활과 프로젝트 경험을 기록합니다.</p>
+    </div>
+
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          2026
+        </div>
+
+        <h3>웹프로그래밍 학습</h3>
+
+        <p>
+          HTML, CSS, JavaScript를 활용하여
+          개인 웹사이트를 제작하고
+          웹 개발의 기본 구조를 학습하고 있습니다.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          프로젝트
+        </div>
+
+        <h3>개인 웹사이트 제작</h3>
+
+        <p>
+          반응형 웹 디자인과 CSS 스타일링,
+          JavaScript 기능을 적용한
+          개인 소개 페이지를 제작했습니다.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <div class="timeline-year">
+          추가 예정
+        </div>
+
+        <h3>프로젝트 / 대외활동</h3>
+
+        <p>
+          앞으로 진행하는 프로젝트와
+          대외활동 내용을 이곳에 추가할 수 있습니다.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Qualification
+  ========================== -->
+
+  <section>
+
+    <div class="section-title">
+
+      <span>QUALIFICATION</span>
+
+      <h2>자격 & 역량</h2>
+
+      <p>
+        취득한 자격증과 공부하고 있는 기술입니다.
+      </p>
+
+    </div>
+
+
+    <div class="skills">
+
+      <!-- 실제 자격증에 맞게 수정 -->
+
+      <span class="skill">HTML / CSS</span>
+
+      <span class="skill">JavaScript</span>
+
+      <span class="skill">웹프로그래밍</span>
+
+      <span class="skill">AI · SW</span>
+
+      <span class="skill">문제 해결</span>
+
+      <span class="skill">팀 프로젝트</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Personality
+  ========================== -->
+
+  <section id="personality">
+
+    <div class="section-title">
+
+      <span>PERSONALITY</span>
+
+      <h2>나의 성격</h2>
+
+      <p>
+        제가 생각하는 저의 장점입니다.
+      </p>
+
+    </div>
+
+
+    <div class="personality-grid">
+
+      <div class="personality">
+
+        <div class="emoji">🔍</div>
+
+        <h3>호기심</h3>
+
+        <p>
+          새로운 기술이나 궁금한 것을
+          직접 찾아보고 배우는 것을 좋아합니다.
+        </p>
+
+      </div>
+
+
+      <div class="personality">
+
+        <div class="emoji">🔥</div>
+
+        <h3>성실함</h3>
+
+        <p>
+          맡은 일은 끝까지 해내려고 노력하며
+          꾸준하게 실력을 쌓아가고 있습니다.
+        </p>
+
+      </div>
+
+
+      <div class="personality">
+
+        <div class="emoji">🤝</div>
+
+        <h3>협력</h3>
+
+        <p>
+          다른 사람의 의견을 듣고
+          함께 해결책을 찾아가는 것을 중요하게 생각합니다.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Interests
+  ========================== -->
+
+  <section>
+
+    <div class="section-title">
+
+      <span>INTERESTS</span>
+
+      <h2>관심 분야</h2>
+
+      <p>
+        앞으로 더 공부해보고 싶은 분야입니다.
+      </p>
+
+    </div>
+
+
+    <div class="skills">
+
+      <span class="skill">🤖 인공지능</span>
+
+      <span class="skill">💻 웹 개발</span>
+
+      <span class="skill">📱 앱 개발</span>
+
+      <span class="skill">🎨 UI / UX</span>
+
+      <span class="skill">☁️ 클라우드</span>
+
+      <span class="skill">🚀 소프트웨어 개발</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Contact
+  ========================== -->
+
+  <section id="contact">
+
+    <div class="contact-box">
+
+      <h2>
+        함께 이야기해요! 💙
+      </h2>
+
+      <p>
+        웹프로그래밍, AI, SW 개발 등
+        다양한 주제에 대해 이야기하고 싶습니다.
+      </p>
+
+      <a
+        href="mailto:본인메일@example.com"
+        class="btn btn-main"
+      >
+        ✉ 이메일 보내기
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       Footer
+  ========================== -->
+
+  <footer>
+
+    <p>
+      © <span id="year"></span>
+      <strong>양세훈</strong>.
+      All Rights Reserved.
+    </p>
+
+    <p>
+      Hanshin University · AI.SW College
+    </p>
+
+  </footer>
+
+
+  <!-- 맨 위로 버튼 -->
+
+  <button id="topButton" title="맨 위로">
+    ↑
+  </button>
+
+
+  <!-- =========================
+       JavaScript
+  ========================== -->
+
+  <script>
+
+    // 현재 연도 자동 표시
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // 맨 위로 버튼
+    const topButton =
+      document.getElementById("topButton");
+
+
+    window.addEventListener("scroll", function () {
+
+      if (window.scrollY > 400) {
+
+        topButton.style.display = "block";
+
+      } else {
+
+        topButton.style.display = "none";
+
+      }
+
+    });
+
+
+    // 버튼 클릭 시 맨 위로 이동
+    topButton.addEventListener("click", function () {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    // 메뉴 클릭 시 부드럽게 이동
+    document.querySelectorAll(".menu a").forEach(function(link) {
+
+      link.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const target =
+          document.querySelector(
+            this.getAttribute("href")
+          );
+
+        target.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
